@@ -29,3 +29,40 @@ function updateClock(){
 
 setInterval(updateClock, 1000);
 updateClock();
+
+let wakeLock = null;
+
+async function enableWakeLock() {
+    try {
+        wakeLock = await navigator.wakeLock.request('screen');
+        console.log('Wake Lock is active');
+
+        wakeLock.addEventListener('release', () => {
+            console.log('Wake Lock released');
+        });
+
+    } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+    }
+}
+
+
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+fullscreenBtn.addEventListener('click', async () => {
+    if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+        await enableWakeLock(); // 👈 screen sleep off
+    }
+});
+
+
+
+/* fullscreen change detect */
+document.addEventListener('fullscreenchange', () => {
+    if (document.fullscreenElement) {
+        fullscreenBtn.style.display = "none";
+    } else {
+        fullscreenBtn.style.display = "block";
+    }
+});
