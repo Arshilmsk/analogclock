@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", "Inter", "SF Pro Display", system-ui, -apple-system, sans-serif;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background: #e6e6e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* wrapper */
+.clock-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* CLOCK */
+.clock{
+    width: 320px;
+    height: 320px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    position: relative;
+    box-shadow:
+        inset 10px 10px 20px #d1d1d1,
+        inset -10px -10px 20px #ffffff,
+        0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* clock marks */
+.mark{
+    position: absolute;
+    width: 3px;
+    height: 15px;
+    background: #aaa;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+}
+
+.m3{ transform: rotate(90deg) translateX(-50%); transform-origin: center 150px; }
+.m6{ transform: rotate(180deg) translateX(-50%); transform-origin: center 150px; }
+.m9{ transform: rotate(270deg) translateX(-50%); transform-origin: center 150px; }
+
+/* hands */
+.hand{
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background: #333;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 50%;
+    border-radius: 10px;
+}
+
+
+.hour{
+    width: 30%;
+    height: 6px;
+}
+
+.minute{
+    width: 40%;
+    height: 5px;
+}
+
+.second{
+    width: 45%;
+    height: 2px;
+    background: #1e88e5;
+}
+
+/* center dot */
+.center{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(145deg, #444, #111);;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* digital */
+.digital{
+    text-align: center;
+}
+
+.digital h1{
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.digital p{
+    color: #555;
+    font-size: 1rem;
+}
+.digital-inside{
+    position: absolute;
+    bottom: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    pointer-events: none; /* hands ke click se problem na ho */
+}
+
+.digital-inside h2{
+    font-size: 1.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;   /* watch feel */
+    color: #444;
+}
+
+.digital-inside p{
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #777;
+}
